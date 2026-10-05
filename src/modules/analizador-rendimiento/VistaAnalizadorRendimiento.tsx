@@ -4,11 +4,11 @@ import {
   DatosContadorPerfmon,
   ViolacionUmbral,
   ConfiguracionUmbrales,
-} from './types/tiposAnalizador';
-import { TarjetaGraficoRendimiento } from './components/TarjetaGraficoRendimiento';
-import { ModalUmbrales } from './components/ModalUmbrales';
-import { ModalExportarReporte } from './components/ModalExportarReporte';
-import { useAnalizadorRendimiento } from './hooks/useAnalizadorRendimiento';
+} from '../types/tiposAnalizador';
+import { TarjetaGraficoRendimiento } from './TarjetaGraficoRendimiento';
+import { ModalUmbrales } from './ModalUmbrales';
+import { ModalExportarReporte } from './ModalExportarReporte';
+import { useAnalizadorRendimiento } from '../hooks/useAnalizadorRendimiento';
 import {
   Upload,
   FileText,

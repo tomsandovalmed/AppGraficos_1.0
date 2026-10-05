@@ -3,9 +3,9 @@ import {
   DatosContadorPerfmon,
   ViolacionUmbral,
   ConfiguracionUmbrales,
-} from "./modules/analizador-rendimiento/types/tiposAnalizador";
-import { analizarContadores } from "./modules/analizador-rendimiento/utils/detectorUmbrales";
-import { VistaAnalizadorRendimiento } from "./modules/analizador-rendimiento/VistaAnalizadorRendimiento";
+} from "./types/tiposAnalizador";
+import { analizarContadores } from "./utils/detectorUmbrales";
+import { VistaAnalizadorRendimiento } from "./components/VistaAnalizadorRendimiento";
 
 // ============================================================================
 // CONFIGURACIÓN DE UMBRALES DE RESPALDO (S&A CHILE STANDARDS)
@@ -35,7 +35,7 @@ export default function App() {
     setAlerts(parsedAlerts);
   };
 
-  const handleUpdateThresholds = async (newConfig: ConfiguracionUmbrales) => {
+  const handleUpdateThresholds = (newConfig: ConfiguracionUmbrales) => {
     setThresholdConfig(newConfig);
 
     if (counters.length > 0) {
@@ -45,16 +45,6 @@ export default function App() {
       );
       setCounters(updatedCounters);
       setAlerts(updatedAlerts);
-    }
-
-    try {
-      await fetch("/api/v1/perfmon/thresholds", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newConfig),
-      });
-    } catch {
-      // Ignorar errores de red en entorno local
     }
   };
 
